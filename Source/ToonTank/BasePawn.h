@@ -20,21 +20,17 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY()
-		class UCapsuleComponent* CapsuleComp = nullptr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category= "Components", meta = (AllowPrivateAccess = "true"))
+	class UCapsuleComponent* CapsuleComp;
 
-	UPROPERTY()
-		UStaticMeshComponent* BaseMesh = nullptr;
-	UPROPERTY()
-		UStaticMeshComponent* TurretMesh = nullptr;
-	UPROPERTY()
-		USceneComponent* ProjectileSpawnPoint = nullptr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category= "Components", meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* BaseMesh;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category= "Components", meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* TurretMesh;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category= "Components", meta = (AllowPrivateAccess = "true"))
+	USceneComponent* ProjectileSpawnPoint;
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 };
