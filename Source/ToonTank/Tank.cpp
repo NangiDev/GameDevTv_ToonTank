@@ -3,6 +3,7 @@
 
 #include "Tank.h"
 
+#include "DrawDebugHelpers.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -22,6 +23,38 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
+}
+
+// Called every frame
+void ATank::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if (PlayerControllerRef)
+	{
+		FHitResult HitResult;
+		PlayerControllerRef->GetHitResultUnderCursor(
+			ECC_Visibility,
+			false,
+			HitResult);
+
+		RotateTurret(HitResult.ImpactPoint);
+
+		// DrawDebugSphere(
+		// 	GetWorld(),
+		// 	HitResult.ImpactPoint,
+		// 	10.f,
+		// 	32,
+		// 	FColor::Red,
+		// 	false,
+		// 	-1.f);
+	}
+}
+
+// Called when the game starts or when spawned
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+	PlayerControllerRef = Cast<APlayerController>(GetController());
 }
 
 void ATank::Move(const float Value)
