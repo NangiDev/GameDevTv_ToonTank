@@ -28,6 +28,9 @@ private:
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& HitResult);
+	
+	UPROPERTY(EditAnywhere)
+	float Damage = 50.f;
 
 public:	
 	// Called every frame
