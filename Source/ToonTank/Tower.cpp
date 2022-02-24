@@ -4,6 +4,7 @@
 #include "Tower.h"
 
 #include "DrawDebugHelpers.h"
+#include "Tank.h"
 #include "Kismet/GameplayStatics.h"
 
 void ATower::Tick(float DeltaTime)

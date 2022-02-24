@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "BasePawn.h"
-#include "Tank.h"
 #include "Tower.generated.h"
 
 /**
