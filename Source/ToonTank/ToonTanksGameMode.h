@@ -20,8 +20,15 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartGame();
 	
 private:
 	class ATank* Tank;
-	
+	class AToonTanksPlayerController* ToonTanksPlayerController;
+
+	float StartDelay = 3.f;
+
+	void HandleGameStart();
 };
